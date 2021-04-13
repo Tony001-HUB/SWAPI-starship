@@ -1,11 +1,12 @@
 import {getData} from "../services/getData.js";
-
+import openModal from "./openModal.js";
 
 function createCard() {
     getData(`https://swapi.dev/api/starships`)
     .then(data => data.results.forEach(starshipItem => {
       renderCard(document.querySelector(".card__container"), starshipItem);
-    }));
+    }))
+    .then(setTimeout(openModal, 1000))
 }
 
 function renderCard(HTMLContainer, data) {
@@ -14,16 +15,27 @@ function renderCard(HTMLContainer, data) {
           <div class="col s12 m7">
           <div class="card">
               <div class="card-image">
-              <img src="https://files.hightech.plus/photos/article-b4eea472-b296-4d90-a66e-1b8289550cbb/13392faf-084a-4728-984d-a91d6bf05ef3.jpeg">
+              <img src="https://pw.artfile.me/wallpaper/20-03-2017/650x407/kosmos-kosmicheskie-korabli--kosmicheski-1143277.jpg">
               <span class="card-title">Name: ${data.name}</span>
               </div>
               <div class="card-content">
               <p>Manufacturer: ${data.manufacturer}</p>
               </div>
               <div class="card-action">
-              <a href="#">More details</a>
+              <a href="#" class="more-details">More details</a>
               </div>
           </div>
+          </div>
+        <div class="more-details-modal">
+            <p>model: ${data.model}</p><br>
+            <p>cost_in_credits: ${data.cost_in_credits}</p><br>
+            <p>length: ${data.length}</p><br>
+            <p>max_atmosphering_speed: ${data.max_atmosphering_speed}</p><br>
+            <p>crew: ${data.crew}</p><br>
+            <p>cargo_capacity: ${data.cargo_capacity}</p><br>
+            <p>consumables: ${data.consumables}</p><br>
+            <p>hyperdrive_rating: ${data.hyperdrive_rating}</p><br>
+            <p>starship_class: ${data.starship_class}</p><br>
           </div>
       </div>
     `);

@@ -1,5 +1,6 @@
 import {getData} from "../services/getData.js";
-import {renderCard} from "./renderCard.js"
+import {renderCard} from "./renderCard.js";
+import openModal from "./openModal.js";
 
 
 function workWithPagination() {
@@ -11,6 +12,7 @@ function workWithPagination() {
             .then(starshipItem => starshipItem.results.forEach(element => {
                 renderCard(document.querySelector(".card__container"), element);
             }))
+            .then(setTimeout(openModal, 1000))
         })
     })
 }

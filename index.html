@@ -8,38 +8,53 @@
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav>
-            <div class="nav-wrapper teal accent-3">
-              <a href="#" class="brand-logo">Logo</a>
+        <nav class="header">
+            <div class="nav-wrapper blue darken-3 logo">
+                <a href="#" class="brand-logo">WELCOME</a>
             </div>
           </nav>
     </header>
 
+    <section class="search__container">
+        <div class="search__container-btn">
+            <input class="search__container-input" type="text">
+            <a class="waves-effect waves-light btn">Search</a>
+            <a class="material-icons waves-effect waves-light btn reset-search" style="
+            position: relative;
+            padding: 6px;
+            margin-left: 5px;
+            top: 7px;">
+            cached</a>    
+        </div>
+    </section>
+
     <section>
         <div class="card__container">
         </div>
-        <div class="card__pagination-link">
-            
+        <div class="card__pagination-link">   
         </div>
     </section>
     
-    <footer class="page-footer teal accent-3">
+    <footer class="page-footer blue darken-3">
         <div class="container">
         <div class="row">
             <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">Что-то интересное</p>
+            <h5 class="white-text">About us</h5>
+            <p class="grey-text text-lighten-4">We are a young developing company in space technologies. We invite new employees and customers</p>
             </div>
             <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">ИНСТА</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">ВК</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">ТЕЛЕГА</a></li>
-            </ul>
+            <h5 class="white-text"><ins>Сontact us:</ins></h5>
+            <div class="icon-bar">
+                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="google"><i class="fa fa-google"></i></a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+              </div>
             </div>
         </div>
         </div>
@@ -51,5 +66,6 @@
     </footer>
     
     <script type="module" src="resources/js/index.js"></script>
+    <script type="module" src="resources/js/components/openModal.js"></script>
 </body>
 </html>
