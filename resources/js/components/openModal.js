@@ -4,8 +4,7 @@ export default function openModal() {
         item.addEventListener('click', event => {
             event.preventDefault();
             const domItem = item.parentElement.parentElement.parentElement.parentElement;
-            console.log(domItem);
-            domItem.querySelector(".more-details-modal").classList.remove("more-details-modal");    
+            domItem.querySelector(".more-details-modal").classList.remove("active-modal");    
         })
     })
 }

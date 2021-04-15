@@ -2,11 +2,11 @@ import {getData} from "../services/getData.js";
 import openModal from "./openModal.js";
 
 function createCard() {
-    getData(`https://swapi.dev/api/starships`)
+    getData(`https://swapi.dev/api/starships/`)
     .then(data => data.results.forEach(starshipItem => {
       renderCard(document.querySelector(".card__container"), starshipItem);
     }))
-    .then(setTimeout(openModal, 1000))
+    .then(setTimeout(openModal, 15000))
 }
 
 function renderCard(HTMLContainer, data) {
@@ -26,39 +26,19 @@ function renderCard(HTMLContainer, data) {
               </div>
           </div>
           </div>
-        <div class="more-details-modal">
-            <p>model: ${data.model}</p><br>
-            <p>cost_in_credits: ${data.cost_in_credits}</p><br>
-            <p>length: ${data.length}</p><br>
-            <p>max_atmosphering_speed: ${data.max_atmosphering_speed}</p><br>
-            <p>crew: ${data.crew}</p><br>
-            <p>cargo_capacity: ${data.cargo_capacity}</p><br>
-            <p>consumables: ${data.consumables}</p><br>
-            <p>hyperdrive_rating: ${data.hyperdrive_rating}</p><br>
-            <p>starship_class: ${data.starship_class}</p><br>
+          <div class="more-details-modal active-modal">
+            <p>model: ${data.model}</p>
+            <p>cost_in_credits: ${data.cost_in_credits}</p>
+            <p>length: ${data.length}</p>
+            <p>max_atmosphering_speed: ${data.max_atmosphering_speed}</p>
+            <p>crew: ${data.crew}</p>
+            <p>cargo_capacity: ${data.cargo_capacity}</p>
+            <p>consumables: ${data.consumables}</p>
+            <p>hyperdrive_rating: ${data.hyperdrive_rating}</p>
+            <p>starship_class: ${data.starship_class}</p>
+            <button class="modal-close">close</button>
           </div>
-      </div>
     `);
 }
 
-function createPagination() {
-  getData(`https://swapi.dev/api/starships`)
-  .then(allStarship => Math.ceil(allStarship.count / 10))
-  .then(countItem => renderPagination(countItem))
-}
-
-function renderPagination(countOfPaginationItem) {
-  for(let i = 1; i <= countOfPaginationItem; i++)
-  if(i == 1){
-    document.querySelector(".card__pagination-link").insertAdjacentHTML('beforeend',`
-    <a href="#" id="${i}" class="pagination-item active">${i}</a>
-  `)
-  } else {
-    document.querySelector(".card__pagination-link").insertAdjacentHTML('beforeend',`
-    <a href="#" id="${i}" class="pagination-item">${i}</a>
-  `)
-  }
-
-}
-
-export { createCard, renderCard, createPagination };
+export { createCard, renderCard };

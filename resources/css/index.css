@@ -6,13 +6,6 @@ header {
     min-height: 340px;
 }
 
-.more-details-modal {
-    display: none;
-    height: 300px;
-    width: 200px;
-    background-color:brown;
-}
-
 .header {
     height: 100%;
 }
@@ -20,11 +13,28 @@ header {
 .card__container {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(2, 1.5fr);
-    grid-column-gap: 10px;
+    grid-template-columns: repeat(2, 0.3fr);
+    grid-column-gap: 100px;
     grid-row-gap: 10px;
-    margin-left: 220px;
     margin-top: 15px;
+}
+
+.more-details-modal {
+    background-color: rgba(26, 4, 92, 0.5);
+    height: 550px;
+    width: 200px;
+    display: grid;
+    justify-content: end;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.modal-text {
+    text-align: center;
+}
+
+.active-modal {
+    background-color: chocolate;
+    display: none;
 }
 
 .active {
@@ -42,6 +52,10 @@ header {
 }
 
 .pagination-item {
+    padding: 20px;
+}
+
+.search-pagination-item {
     padding: 20px;
 }
 
@@ -114,3 +128,6 @@ nav .brand-logo {
 .search__container-input {
     padding: 15px;
 }
+
+
+
