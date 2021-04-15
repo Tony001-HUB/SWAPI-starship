@@ -1,5 +1,5 @@
 import {getData} from "../services/getData.js";
-import openModal from "./openModal.js";
+import {modal} from "./modal.js";
 import {createCard} from "./renderCard.js";
 import {createPagination} from "./workWithPagination.js";
 import {workWithPagination} from "./workWithPagination.js";
@@ -17,7 +17,7 @@ function search() {
             document.querySelector(".card__container").insertAdjacentHTML('beforeend', HTMLCode(item));
         })))
         .then(document.querySelector(".search__container-input").value = "")
-        .then(setTimeout(openModal, 1000))
+        .then(setTimeout(modal, 1000))
         .then(setTimeout(listenPaginationClickItem, 1000))
         .then(setTimeout(addPaginationSearchActivity, 1000))
        
@@ -64,35 +64,43 @@ function listenPaginationClickItem() {
     })
 }
 
-function HTMLCode(item) {
+function HTMLCode(data) {
     return `
-    <div class="row">
+        <div class="row">
         <div class="col s12 m7">
         <div class="card">
             <div class="card-image">
             <img src="https://pw.artfile.me/wallpaper/20-03-2017/650x407/kosmos-kosmicheskie-korabli--kosmicheski-1143277.jpg">
-            <span class="card-title">Name: ${item.name}</span>
+            <span class="card-title">Name: ${data.name}</span>
             </div>
             <div class="card-content">
-            <p>Manufacturer: ${item.manufacturer}</p>
+            <p>Manufacturer: ${data.manufacturer}</p>
             </div>
             <div class="card-action">
             <a href="#" class="more-details">More details</a>
             </div>
         </div>
         </div>
-        <div class="more-details-modal">
-            <p class="modal-text">model: ${item.model}</p><br>
-            <p class="modal-text">cost_in_credits: ${item.cost_in_credits}</p><br>
-            <p class="modal-text">length: ${item.length}</p><br>
-            <p class="modal-text">max_atmosphering_speed: ${item.max_atmosphering_speed}</p><br>
-            <p class="modal-text">crew: ${item.crew}</p><br>
-            <p class="modal-text">cargo_capacity: ${item.cargo_capacity}</p><br>
-            <p class="modal-text">consumables: ${item.consumables}</p><br>
-            <p class="modal-text">hyperdrive_rating: ${item.hyperdrive_rating}</p><br>
-            <p class="modal-text">starship_class: ${item.starship_class}</p><br>
-      </div>
-    </div>
+        <div id="myModal" class="modal">         
+        <div class="modal-content">
+            <div class="modal-header">
+            <h2>More details about ${data.model}</h2>
+            </div>
+            <div class="modal-body">
+            <p>cost_in_credits: ${data.cost_in_credits}</p>
+            <p>length: ${data.length}</p>
+            <p>max_atmosphering_speed: ${data.max_atmosphering_speed}</p>
+            <p>crew: ${data.crew}</p>
+            <p>cargo_capacity: ${data.cargo_capacity}</p>
+            <p>consumables: ${data.consumables}</p>
+            <p>hyperdrive_rating: ${data.hyperdrive_rating}</p>
+            <p>starship_class: ${data.starship_class}</p>
+            </div>
+            <div class="modal-footer">
+            <a class="waves-effect waves-light btn close">close</a>
+            </div>
+        </div>
+        </div>
     `
 }
 
