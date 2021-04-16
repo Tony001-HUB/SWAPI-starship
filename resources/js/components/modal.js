@@ -11,12 +11,6 @@ function modal() {
             DOM.querySelector(".close").addEventListener('click', event => {
                 DOM.querySelector(".modal").style.display = "none";
             })
-
-            window.onclick = function(event) {
-                if (event.target == DOM.querySelector(".modal")) {
-                    DOM.querySelector(".modal").style.display = "none";
-                }
-            }
         })
     })
 }
