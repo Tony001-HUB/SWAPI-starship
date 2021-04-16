@@ -3,10 +3,9 @@ import {createPagination} from "./components/workWithPagination.js";
 import {workWithPagination} from "./components/workWithPagination.js";
 import {addPaginationActivity} from "./components/addPaginationActivity.js";
 import {search} from "./components/search.js";
-import {modal} from "./components/modal.js";
 
-createPagination();
+//createPagination();
 createCard();
-setTimeout(workWithPagination, 1000);
-setTimeout(addPaginationActivity, 1000);
+setTimeout(workWithPagination, 2000);
+setTimeout(addPaginationActivity, 2000);
 search();

@@ -1,12 +1,13 @@
 import {getData} from "../services/getData.js";
-import {modal} from "./modal.js";
+import openModal from "../components/modal/openModal.js";
+import {createPagination} from "./workWithPagination.js"
 
 function createCard() {
     getData(`https://swapi.dev/api/starships/`)
-    .then(data => data.results.forEach(starshipItem => {
+    .then(data => {data.results.forEach(starshipItem => {
       renderCard(document.querySelector(".card__container"), starshipItem);
-    }))
-    .then(setTimeout(modal, 1000))
+    }), createPagination(data.count)})
+    .then(setTimeout(openModal, 1000))
 }
 
 function renderCard(HTMLContainer, data) {
@@ -22,29 +23,9 @@ function renderCard(HTMLContainer, data) {
               <p>Manufacturer: ${data.manufacturer}</p>
               </div>
               <div class="card-action">
-              <a href="#" class="more-details">More details</a>
+              <a href="#" class="more-details" url="${data.url}">More details</a>
               </div>
           </div>
-          </div>
-          <div id="myModal" class="modal">         
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2>More details about ${data.model}</h2>
-              </div>
-              <div class="modal-body">
-              <p>cost_in_credits: ${data.cost_in_credits}</p>
-              <p>length: ${data.length}</p>
-              <p>max_atmosphering_speed: ${data.max_atmosphering_speed}</p>
-              <p>crew: ${data.crew}</p>
-              <p>cargo_capacity: ${data.cargo_capacity}</p>
-              <p>consumables: ${data.consumables}</p>
-              <p>hyperdrive_rating: ${data.hyperdrive_rating}</p>
-              <p>starship_class: ${data.starship_class}</p>
-              </div>
-              <div class="modal-footer">
-              <a class="waves-effect waves-light btn close">close</a>
-              </div>
-        </div>
       </div>
     `);
 }

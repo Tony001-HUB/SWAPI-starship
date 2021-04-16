@@ -1,6 +1,6 @@
 import {getData} from "../services/getData.js";
 import {renderCard} from "./renderCard.js";
-import {modal} from "./modal.js";
+import openModal from "./modal/openModal.js";
 
 
 function workWithPagination() {
@@ -12,15 +12,13 @@ function workWithPagination() {
             .then(starshipItem => starshipItem.results.forEach(element => {
                 renderCard(document.querySelector(".card__container"), element);
             }))
-            .then(setTimeout(modal, 1000))
+            .then(setTimeout(openModal, 1000))
         })
     })
 }
 
-function createPagination() {
-    getData(`https://swapi.dev/api/starships/`)
-    .then(allStarship => Math.ceil(allStarship.count / 10))
-    .then(countItem => renderPagination(countItem))
+  function createPagination(APIData) {
+    renderPagination(Math.ceil(APIData / 10));
   }
   
   function renderPagination(countOfPaginationItem) {
@@ -39,4 +37,3 @@ function createPagination() {
 
 export {workWithPagination, createPagination, renderPagination}
 
-//google-site-verification=geNKiCG6WFM1Kdokqh9sQ2iv669qyqR_Cw01Fa4CKIA
